@@ -22,7 +22,7 @@ export default ({ mode }) => {
         '@': path.resolve(__dirname, './src'),
       },
     },
-    base: mode === 'development' ? '' : '/up/',
+    base: mode === 'development' ? '' : '',
     plugins: [
       vue(),
       vueJsx(),
