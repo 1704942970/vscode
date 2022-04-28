@@ -7,7 +7,7 @@
    <button btn @click="getAuthCode">获取授权code</button>
    </section>
    <TheTabbar />
-  <section flex-c gap-2>
+ <!-- <section flex-c gap-2>
     <UPButton
       :timeout="2000"
       class="customBtn"
@@ -26,7 +26,7 @@
     />
     <button btn @click="wakeShare">share</button>
   </section>
-  <br/>
+  <br/>-->
 
 </template>
 
