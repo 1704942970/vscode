@@ -1,8 +1,12 @@
 <template>
-  <div>大风车转转转</div>
-   <div id="code"></div>
-  <button btn @click="toStore">兑换商城</button>
-  <p text-center py-3>hello ysf</p>
+  <TheHeader />
+  <div id='code'></div>
+  <!-- <button btn @click="toStore">兑换商城</button>-->
+  <p text-center py-3></p>
+    <section  flex-c gap-2>
+   <button btn @click="getAuthCode">获取授权code</button>
+   </section>
+   <TheTabbar />
   <section flex-c gap-2>
     <UPButton
       :timeout="2000"
@@ -22,9 +26,8 @@
     />
     <button btn @click="wakeShare">share</button>
   </section>
-   <section>
-   <button btn @click="getAuthCode">获取授权code</button>
-   </section>
+  <br/>
+
 </template>
 
 <script setup lang="ts">
@@ -38,11 +41,14 @@
     });
   }
 
- function getAuthCode(){
+  function getAuthCode(){
     upsdk.pluginReady(function(){
         upsdk.appletAuth({
             success: function (data) {
                 document.getElementById("code").innerHTML = data.code
+                upsdk.showFlashInfo({
+                  msg: data.code
+              });
             },
             fail: function (error) {
                 document.getElementById("code").innerHTML = error.errmsg
@@ -50,6 +56,7 @@
         })
     })
   }
+
   function btnClick(isSuccess: boolean, result: any) {
     console.log(result);
     if (!isSuccess) {
