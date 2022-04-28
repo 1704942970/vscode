@@ -1,5 +1,5 @@
 <template>
-  <div h-44px flex-c bg-green text-white>支付就用云！闪！付！</div>
+  <div h-44px flex-c bg-green text-white>小程序开发API！</div>
 </template>
 
 <script setup lang="ts"></script>
