@@ -1,6 +1,6 @@
 <template>
   <TheHeader />
-  <textarea v-model="authCode"></textarea>
+  <textarea text-center w-full v-model="authCode"></textarea>
   <!-- <button btn @click="toStore">兑换商城</button>-->
   <p text-center py-3></p>
     <section  flex-c gap-2>
