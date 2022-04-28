@@ -1,6 +1,6 @@
 <template>
   <TheHeader />
-  <div id='code'></div>
+  <textarea v-model="authCode"></textarea>
   <!-- <button btn @click="toStore">兑换商城</button>-->
   <p text-center py-3></p>
     <section  flex-c gap-2>
@@ -41,20 +41,19 @@
     });
   }
 
-  function getAuthCode(){
-    upsdk.pluginReady(function(){
-        upsdk.appletAuth({
-            success: function (data) {
-                document.getElementById("code").innerHTML = data.code
-                upsdk.showFlashInfo({
-                  msg: data.code
-              });
-            },
-            fail: function (error) {
-                document.getElementById("code").innerHTML = error.errmsg
-            }
-        })
-    })
+ const authCode = ref<string>('');
+
+  function getAuthCode() {
+    upsdk.pluginReady(function () {
+      upsdk.appletAuth({
+        success: function (data: any) {
+          authCode.value = data.code;
+        },
+        fail: function (error: any) {
+          authCode.value = error.errmsg;
+        },
+      });
+    });
   }
 
   function btnClick(isSuccess: boolean, result: any) {
